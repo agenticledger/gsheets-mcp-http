@@ -21,6 +21,12 @@ export class GSheetsClient {
   }
 
   private async getAccessToken(): Promise<string> {
+    // Connections Broker passthrough: a broker-issued Google access token arrives
+    // already exchanged. Google access tokens are prefixed ya29.; use directly
+    // and skip the exchange. Refresh tokens (1//…) fall through unchanged.
+    if (this.refreshToken.startsWith('ya29.')) {
+      return this.refreshToken;
+    }
     // Use cached token if still valid (with 60s buffer)
     if (this.cachedAccessToken && Date.now() < this.tokenExpiresAt - 60_000) {
       return this.cachedAccessToken;
