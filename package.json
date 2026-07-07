@@ -1,7 +1,7 @@
 {
   "name": "gsheets-mcp-http",
-  "version": "1.0.0",
-  "description": "Google Sheets MCP Server — Exposed via Streamable HTTP transport with Google OAuth",
+  "version": "2.0.0",
+  "description": "Google Sheets MCP Server — Streamable HTTP, broker-first auth (Connections Broker)",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
@@ -12,11 +12,13 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.0",
     "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.3",
     "zod": "^3.22.4",
     "zod-to-json-schema": "^3.22.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20.10.0",
     "tsx": "^4.21.0",
     "typescript": "^5.3.0"
